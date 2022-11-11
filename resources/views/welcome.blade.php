@@ -1,5 +1,12 @@
 <x-app-layout>
-    
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <p class="text-white md:text-xl text-center">
+                Consulta porciones de código reutilizables para funcionalidades específicas, por ejemplo: leer un archivo en Java, sumar días hábiles en PHP y cualquier funcionalidad 
+                de diferentes tecnologías gracias al aporte de la comunidad, ya que cualquiera puede <span class="text-red">publicar</span> sus porciones de código reutilizables.
+            </p>
+        </div>
+    </div>
 </x-app-layout>
 
 {{-- <!DOCTYPE html>

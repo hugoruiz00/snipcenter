@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class="bg-[#212940] border-b">
+<nav x-data="{ open: false }" class="bg-[#212940]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <x-application-logo class="block h-10 w-auto fill-current text-[#171D2E]" />
                     </a>
                 </div>
@@ -47,9 +47,13 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                @else                
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @else         
+                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Login') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="ml-2">
+                        {{ __('Register') }}
+                    </x-nav-link>
                 @endauth
             </div>
 
@@ -97,10 +101,10 @@
         @else
             <div class="py-1 border-t border-gray-200">
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    Login
+                    {{ __('Login') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                    Register
+                    {{ __('Register') }}
                 </x-responsive-nav-link>
             </div>
         @endauth
