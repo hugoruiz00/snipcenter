@@ -30,22 +30,23 @@
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <input id="remember_me" type="checkbox" class="rounded text-[#1C6FAC] shadow-sm" name="remember">
+                    <span class="ml-2 text-sm text-[#ACACAC]">{{ __('Remember me') }}</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+            <div class="mt-4 flex justify-center">
+                <x-primary-button class="mt-3 sm:w-1/2 justify-center">
+                    {{ __('Log in') }}
+                </x-primary-button>                
+            </div>
+            @if (Route::has('password.request'))
+                <div class="mt-2 flex justify-center">
+                    <a class="underline text-sm text-[#ACACAC] hover:text-[#1C6FAC]" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
-                @endif
-
-                <x-primary-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </div>
+                </div>
+            @endif
         </form>
     </x-auth-card>
 </x-app-layout>
