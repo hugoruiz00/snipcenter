@@ -20,10 +20,13 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')" class="mr-3">
+                    {{ __('Post') }}
+                </x-nav-link>
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="flex items-center text-sm font-medium text-white hover:text-[#1C6FAC] focus:outline-none focus:text-[#1C6FAC] transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-white hover:text-[#1C6FAC] focus:outline-none focus:text-[#1C6FAC] transition duration-150 ease-in-out mt-1">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -38,7 +41,6 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
@@ -51,7 +53,7 @@
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('Login') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="ml-2">
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="ml-3">
                         {{ __('Register') }}
                     </x-nav-link>
                 @endauth
@@ -78,8 +80,11 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        @auth
-            <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="py-2 border-t border-gray-200">
+            <x-responsive-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                {{ __('Post') }}
+            </x-responsive-nav-link>
+            @auth
                 <div class="px-4">
                     <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
                     <div class="font-medium text-sm text-[#ACACAC]">{{ Auth::user()->email }}</div>
@@ -97,16 +102,14 @@
                         </x-responsive-nav-link>
                     </form>
                 </div>
-            </div>
-        @else
-            <div class="py-1 border-t border-gray-200">
+            @else
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('Login') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
                     {{ __('Register') }}
                 </x-responsive-nav-link>
-            </div>
-        @endauth
+            @endauth
+        </div>
     </div>
 </nav>
