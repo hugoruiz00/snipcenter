@@ -18,14 +18,15 @@
                         <x-input-error :messages="$errors->get('body')" class="mt-2" />
                     </div>
 
-                    {{-- rounded-md shadow-sm bg-[#171D2E] border-[#1C6FAC] border-2 focus:border-[#1C6FAC] focus:ring focus:ring-[#1C6FAC] focus:ring-opacity-50 text-white focus:bg-[#212940] color-white' --}}
-                    <div>
-                        <select class="js-example-basic-multiple
-                        
-                        " name="states[]" multiple="multiple">
+                    <div class="mt-4">
+                        <x-input-label class="mb-1" for="tags" :value="__('Etiquetas')" />
+                        <select style="width: 100%" class="tags" name="tags[]" multiple="multiple">
                             <option value="AL">Alabama</option>
                             <option value="WY">Wyoming</option>
+                            <option value="WY">Testing</option>
+                            <option value="WY">Enuming</option>
                         </select>
+                        <x-input-error :messages="$errors->get('tags')" class="mt-2" />
                     </div>
 
                     <div class="mt-5">
@@ -40,7 +41,9 @@
     @section('script')
         <script>
             $(document).ready(function() {
-                $('.js-example-basic-multiple').select2();
+                $('.tags').select2({
+                    placeholder: "Seleccione algunas etiquetas"
+                });
             });
         </script>
     @endsection

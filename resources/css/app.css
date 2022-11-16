@@ -19,3 +19,16 @@ select:-webkit-autofill:focus {
 input::-ms-reveal {
   filter: invert(100%);
 }
+
+.select2-selection {
+  @apply !bg-[#171D2E] !border-[#1C6FAC] !border-2 focus:!ring focus:!ring-[#1C6FAC] focus:!ring-opacity-50 focus:!bg-[#212940] text-white;
+}
+.select2-selection__choice {
+  @apply !bg-[#171D2E];
+}
+.select2-selection__choice__remove {
+  @apply hover:!bg-[#1C6FAC];
+}
+.select2-selection__choice__remove span {
+  @apply !text-white;
+}
