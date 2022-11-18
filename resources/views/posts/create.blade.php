@@ -22,7 +22,7 @@
     
                         <div class="mt-4">
                             <x-input-label class="mb-1" for="tags" :value="__('Etiquetas')" />
-                            <select style="width: 100%" class="tags" name="tags[]" multiple="multiple" required>
+                            <select style="width: 100%" class="tags" id="tags" name="tags[]" multiple="multiple" required>
                                 @foreach ($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
@@ -43,8 +43,31 @@
     @section('script')
         <script>
             $(document).ready(function() {
-                $('.tags').select2({
-                    placeholder: "Seleccione algunas etiquetas"
+                $('#tags').select2({
+                    placeholder: "Seleccione algunas etiquetas",
+                    tags: true,
+                    tokenSeparators: [',', ' ', ';', '|', '&'],
+                    createTag: function (params) {
+                        var term = $.trim(params.term.toLowerCase());                        
+                        if (term === '') {
+                            return null;
+                        }
+                        
+                        if(/[,;|&]/.test(params.term)){
+                            $('#tags').data('select2').selection.$search.val('');
+                        }
+                        //term = term.replace(/[,;|&]/, '');
+                        return {
+                            id: term,
+                            text: term,
+                        }
+                    },
+                }).on('select2:select', function (e) {
+                    // Check if the new tag contains at least letters or numbers
+                    // If it doesn't contains then the new tag will not be created by removing it from the list of selected options
+                    if(!/[a-z0-9]/i.test(e.params.data.text)){                        
+                        $('#tags option:last-child').remove();
+                    }
                 });
             });
         </script>
