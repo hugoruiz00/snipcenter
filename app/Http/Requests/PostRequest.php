@@ -24,16 +24,16 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'body' => 'required',
-            'tags' => 'required',
+            'name' => 'required|between:10,150',
+            'body' => 'required|between:20,5000',
+            'tags' => 'required|between:2,5',
         ];
     }
 
-    public function attributes()
+    public function messages()
     {
         return [
-            'tags' => 'etiquetas',
+            'tags' => 'Ingrese entre 2 y 5 etiquetas',
         ];
     }
 }

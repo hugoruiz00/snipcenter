@@ -10,19 +10,21 @@
                         @csrf
                         <div>
                             <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input placeholder="Agregue un nombre descriptivo a su porción de código" id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                            <x-text-input placeholder="Agregue un nombre descriptivo a su porción de código" id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" autofocus />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
     
                         <div class="mt-4">
                             <x-input-label for="body" :value="__('Porción de código')" />
-                            <x-textarea-input placeholder="Ingrese su porción de código y de ser necesario agregue comentarios descriptivos" rows="5" id="body" class="block mt-1 w-full" name="body" :value="old('body')" required />
+                            <x-textarea-input placeholder="Ingrese su porción de código y de ser necesario agregue comentarios descriptivos" rows="5" id="body" class="block mt-1 w-full" name="body">
+                                {{old('body')}}
+                            </x-textarea-input>
                             <x-input-error :messages="$errors->get('body')" class="mt-2" />
                         </div>
     
                         <div class="mt-4">
                             <x-input-label class="mb-1" for="tags" :value="__('Etiquetas')" />
-                            <select style="width: 100%" class="tags" id="tags" name="tags[]" multiple="multiple" required>
+                            <select style="width: 100%" class="tags" id="tags" name="tags[]" multiple="multiple">
                                 @foreach ($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
@@ -56,7 +58,11 @@
                         if(/[,;|&]/.test(params.term)){
                             $('#tags').data('select2').selection.$search.val('');
                         }
-                        //term = term.replace(/[,;|&]/, '');
+                        // Remove consecutive repeated characters that are not letters or numbers or the + character
+                        term = term.replace(/[^a-z\d+#][^a-z\d]|\+{3}|#{3}/g, '');
+                        // Remove characters at the beginning (#, +, -), at the end (-, .) and other unaccepted characters
+                        term = term.replace(/^[#+-]|[-.]$|[^a-z\d#+-.]/g, '');
+
                         return {
                             id: term,
                             text: term,
