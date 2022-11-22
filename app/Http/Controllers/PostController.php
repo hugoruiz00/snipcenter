@@ -40,6 +40,8 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        $request->tags = $this->getOrCreateTags($request);
+
         dd($request->tags);
     }
 
@@ -86,5 +88,23 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    private function getOrCreateTags($request)
+    {
+        $tags = [];
+        foreach ($request->tags as $tag) {
+            if (str_contains($tag, ':')) {
+                $tagName = explode(':', $tag)[1];
+                $tag = Tag::firstOrCreate([
+                    'name' => $tagName,
+                ]);
+                $tags[] = $tag->id;
+            } else {
+                $tags[] = $tag;
+            }
+        }
+
+        return $tags;
     }
 }
