@@ -15,8 +15,8 @@
                         </div>
     
                         <div class="mt-4">
-                            <x-input-label for="body" :value="__('Porción de código')" />
-                            <x-textarea-input placeholder="Ingrese su porción de código y de ser necesario agregue comentarios descriptivos" rows="5" id="body" class="block mt-1 w-full" name="body">
+                            <x-input-label for="body" :value="__('Contenido')" />
+                            <x-textarea-input placeholder="Ingrese el contenido con comentarios si es necesario" rows="5" id="body" class="block mt-1 w-full" name="body">
                                 {{old('body')}}
                             </x-textarea-input>
                             <x-input-error :messages="$errors->get('body')" class="mt-2" />
@@ -26,7 +26,9 @@
                             <x-input-label class="mb-1" for="tags" :value="__('Etiquetas')" />
                             <select style="width: 100%" class="tags" id="tags" name="tags[]" multiple="multiple">
                                 @foreach ($tags as $tag)
-                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                    <option value="{{$tag->id}}" {{ (collect(old('tags'))->contains($tag->id)) ? 'selected':'' }}>
+                                        {{$tag->name}}
+                                    </option>
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('tags')" class="mt-2" />
