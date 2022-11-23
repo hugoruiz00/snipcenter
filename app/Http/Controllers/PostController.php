@@ -40,9 +40,13 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $request->tags = $this->getOrCreateTags($request);
+        $request->tags = $this->createAndGetTags($request);
+        $request['user_id'] = auth()->id();
+        $request['post_status_id'] = 1;
+        $post = Post::create($request->all());
+        $post->tags()->sync($request->tags);
 
-        dd($request->tags);
+        return redirect()->route('posts.create');
     }
 
     /**
@@ -90,7 +94,7 @@ class PostController extends Controller
         //
     }
 
-    private function getOrCreateTags($request)
+    private function createAndGetTags($request)
     {
         $tags = [];
         foreach ($request->tags as $tag) {
