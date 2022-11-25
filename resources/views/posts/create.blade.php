@@ -45,6 +45,14 @@
         </div>
     </div>
     @section('script')
+        <script src="{{asset('vendor/ckeditor-5/ckeditor.js')}}"></script>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#body' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
         <script>
             $(document).ready(function() {
                 $('#tags').select2({

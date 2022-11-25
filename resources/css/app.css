@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Autocomplete browser styles */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
@@ -15,11 +15,13 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   -webkit-box-shadow: 0 0 0px 1000px #171D2E inset;
 }
+/* End Autocomplete browser styles */
 
 input::-ms-reveal {
   filter: invert(100%);
 }
 
+/* Select2 library styles */
 .select2-selection {
   @apply !bg-[#171D2E] !border-[#1C6FAC] !border-2 focus:!ring focus:!ring-[#1C6FAC] focus:!ring-opacity-50 focus:!bg-[#212940] text-white;
 }
@@ -32,3 +34,21 @@ input::-ms-reveal {
 .select2-selection__choice__remove span {
   @apply !text-white;
 }
+/* End Select2 library styles */
+
+/* Ckeditor library styles */
+.ck.ck-editor__main>.ck-editor__editable {
+  background-color: #171D2E !important;
+  color: white !important;
+  border-width: 2px;
+  border-color: #1C6FAC !important;
+}
+.ck-toolbar_grouping {
+  background-color: #1C6FAC !important;
+  border-width: 2px;
+  border-color: #1C6FAC !important;
+}
+.ck-button {
+  color:black !important;
+}
+/* End Ckeditor library styles */
