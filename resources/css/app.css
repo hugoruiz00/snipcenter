@@ -37,18 +37,35 @@ input::-ms-reveal {
 /* End Select2 library styles */
 
 /* Ckeditor library styles */
-.ck.ck-editor__main>.ck-editor__editable {
-  background-color: #171D2E !important;
-  color: white !important;
-  border-width: 2px;
-  border-color: #1C6FAC !important;
-}
 .ck-toolbar_grouping {
-  background-color: #1C6FAC !important;
-  border-width: 2px;
-  border-color: #1C6FAC !important;
+  @apply !bg-[#1C6FAC] !border-[#1C6FAC];
 }
 .ck-button {
-  color:black !important;
+  @apply !text-black;
+}
+.ck.ck-editor__main>.ck-editor__editable {
+  @apply !bg-[#171D2E] text-white !border-[#1C6FAC];
+}
+.ck.ck-editor__main>.ck-editor__editable pre {
+  background-color: #212b46;
+  color: white;
+}
+.ck.ck-editor__main>.ck-editor__editable code {
+  background-color: #303e64;
+}
+.ck.ck-editor__main>.ck-editor__editable ul {
+  @apply list-disc ml-4;
+}
+.ck.ck-editor__main>.ck-editor__editable ol {
+  @apply list-decimal ml-4;
+}
+.ck.ck-editor__main>.ck-editor__editable h2 {
+  @apply text-2xl;
+}
+.ck.ck-editor__main>.ck-editor__editable h3 {
+  @apply text-xl;
+}
+.ck.ck-editor__main>.ck-editor__editable h4 {
+  @apply text-lg;
 }
 /* End Ckeditor library styles */
