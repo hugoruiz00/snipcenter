@@ -16,7 +16,7 @@
     
                         <div class="mt-4">
                             <x-input-label for="body" :value="__('Contenido')" />
-                            <x-textarea-input placeholder="Ingrese el contenido con comentarios descriptivos si es necesario" rows="5" id="body" class="block mt-1 w-full" name="body">
+                            <x-textarea-input placeholder="Ingrese el contenido con comentarios descriptivos si es necesario" id="body" class="block mt-1 w-full" name="body">
                                 {{old('body')}}
                             </x-textarea-input>
                             <x-input-error :messages="$errors->get('body')" class="mt-2" />

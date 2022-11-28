@@ -1,10 +1,26 @@
 <x-app-layout>
-    <div class="py-12">
+    <div class="py-5 sm:py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <p class="text-white md:text-xl text-center">
+            <h1 class="text-white md:text-xl text-center">
                 Consulta porciones de código reutilizables para funcionalidades específicas, por ejemplo: leer un archivo en Java, sumar días hábiles en PHP y cualquier funcionalidad 
                 de diferentes tecnologías gracias al aporte de la comunidad, ya que cualquiera puede <span class="text-red">publicar</span> sus porciones de código reutilizables.
-            </p>
+            </h1>
+            <div class="bg-[#212940] overflow-hidden sm:rounded-lg my-5 p-4">
+                <div class="flex">
+                    <div class="flex items-center px-3 text-white">
+                        <i class="fa-solid fa-caret-up fa-2xl mr-3"></i>
+                        <p>768</p>
+                    </div>
+                    <div class="px-4">
+                        <p class="text-white mb-3">Leer archivo en Java</p>
+                        <div class="flex text-white">
+                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">css</a>
+                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">html</a>
+                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">java</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
