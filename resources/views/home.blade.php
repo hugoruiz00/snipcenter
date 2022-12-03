@@ -5,22 +5,29 @@
                 Consulta porciones de código reutilizables para funcionalidades específicas, por ejemplo: leer un archivo en Java, sumar días hábiles en PHP y cualquier funcionalidad 
                 de diferentes tecnologías gracias al aporte de la comunidad, ya que cualquiera puede <span class="text-red">publicar</span> sus porciones de código reutilizables.
             </h1>
+            @foreach ($posts as $post)
             <div class="bg-[#212940] overflow-hidden sm:rounded-lg my-5 p-4">
                 <div class="flex">
                     <div class="flex items-center px-3 text-white">
-                        <i class="fa-solid fa-caret-up fa-2xl mr-3"></i>
-                        <p>768</p>
+                        <i class="fa-solid fa-plus mr-2"></i>
+                        <p>1</p>
                     </div>
                     <div class="px-4">
-                        <p class="text-white mb-3">Leer archivo en Java</p>
-                        <div class="flex text-white">
-                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">css</a>
-                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">html</a>
-                            <a href="#" class="text-sm mr-2 py-1 px-2 bg-[#175C8F] rounded">java</a>
+                        <a href="#" class="text-white text-xl block mb-3">{{$post->name}}</a>
+                        <div class="flex text-white mb-3">
+                            @foreach ($post->tags as $tag)
+                                <a href="#" class="text-xs mr-2 py-[2px] px-2 bg-[#175C8F] rounded">{{$tag->name}}</a>
+                            @endforeach
                         </div>
+                        <p class="text-white text-xs">Publicado por 
+                            <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
+                            <span>|</span>
+                            <span>Hace 3 años 1:38 AM</span>
+                        </p>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>
