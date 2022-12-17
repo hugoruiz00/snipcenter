@@ -10,7 +10,7 @@
                 <div class="flex">
                     <div class="flex items-center px-3 text-white">
                         <i class="fa-solid fa-plus mr-2"></i>
-                        <p>1</p>
+                        <p class="text-lg">1</p>
                     </div>
                     <div class="px-4">
                         <a href="#" class="text-white text-xl block mb-3">{{$post->name}}</a>
@@ -22,7 +22,7 @@
                         <p class="text-white text-xs">Publicado por 
                             <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
                             <span>|</span>
-                            <span>Hace 3 años 1:38 AM</span>
+                            <span>{{$post->created_at->diffForHumans()}}</span>
                         </p>
                     </div>
                 </div>
