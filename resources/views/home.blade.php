@@ -13,7 +13,7 @@
                         <p class="text-lg">1</p>
                     </div>
                     <div class="px-4">
-                        <a href="#" class="text-white text-xl block mb-3">{{$post->name}}</a>
+                        <a href="{{route('posts.show', $post)}}" class="text-white text-xl block mb-3">{{$post->name}}</a>
                         <div class="flex text-white mb-3">
                             @foreach ($post->tags as $tag)
                                 <a href="#" class="text-xs mr-2 py-[2px] px-2 bg-[#175C8F] rounded">{{$tag->name}}</a>
