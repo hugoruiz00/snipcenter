@@ -49,11 +49,10 @@ input::-ms-reveal {
   @apply !bg-[#171D2E] text-white !border-[#1C6FAC];
 }
 .ck.ck-editor__main>.ck-editor__editable pre {
-  background-color: #212b46;
-  color: white;
+  @apply bg-[#303e64] text-white;
 }
 .ck.ck-editor__main>.ck-editor__editable code {
-  background-color: #303e64;
+  @apply bg-[#303e64];
 }
 .ck.ck-editor__main>.ck-editor__editable ul {
   @apply list-disc ml-4;
@@ -69,5 +68,11 @@ input::-ms-reveal {
 }
 .ck.ck-editor__main>.ck-editor__editable h4 {
   @apply text-lg;
+}
+pre {
+  @apply bg-[#303e64] text-white my-2 p-2;
+}
+code {
+  @apply bg-[#303e64];
 }
 /* End Ckeditor library styles */
