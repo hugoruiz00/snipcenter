@@ -46,7 +46,7 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $post->tags()->sync($request->tags);
 
-        return redirect()->route('posts.create');
+        return redirect()->route('posts.show', $post);
     }
 
     /**
