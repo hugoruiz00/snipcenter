@@ -10,7 +10,7 @@
                 <div class="flex">
                     <div class="flex items-center px-3 text-white">
                         <i class="fa-solid fa-plus mr-2"></i>
-                        <p class="text-lg">1</p>
+                        <p class="text-lg">{{$post->votes}}</p>
                     </div>
                     <div class="px-4">
                         <a href="{{route('posts.show', $post)}}" class="text-white text-xl block mb-3">{{$post->name}}</a>

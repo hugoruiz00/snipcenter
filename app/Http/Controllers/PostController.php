@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -110,5 +111,24 @@ class PostController extends Controller
         }
 
         return $tags;
+    }
+
+    public function upvote(Post $post){
+        $exists = auth()->user()->votes()->where('post_id', $post->id)->exists();
+        
+        Vote::create([
+            'user_id' => auth()->id(),
+            'post_id' => $post->id,
+            'vote' => 1
+        ]);
+        
+        $post->votes = $post->votes + 1;
+        $post->update();
+
+        return redirect()->route('posts.show', $post);
+    }
+
+    public function downvote(Post $post){
+        //
     }
 }
