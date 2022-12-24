@@ -113,22 +113,30 @@ class PostController extends Controller
         return $tags;
     }
 
-    public function upvote(Post $post){
-        $exists = auth()->user()->votes()->where('post_id', $post->id)->exists();
-        
-        Vote::create([
-            'user_id' => auth()->id(),
-            'post_id' => $post->id,
-            'vote' => 1
-        ]);
-        
-        $post->votes = $post->votes + 1;
+    public function upVote(Post $post){
+        $vote = Vote::where('user_id', auth()->id())->where('post_id', $post->id)->first();
+        if($vote){
+            if($vote->vote === 1){
+                $vote->delete();
+                $post->vote = $post->vote - 1;
+            } elseif($vote->vote === -1){
+                $vote->update(['vote' => 1]);
+                $post->vote = $post->vote + 2;
+            }
+        } else{
+            Vote::create([
+                'user_id' => auth()->id(),
+                'post_id' => $post->id,
+                'vote' => 1
+            ]);
+            $post->vote = $post->vote + 1;
+        }
         $post->update();
 
         return redirect()->route('posts.show', $post);
     }
 
-    public function downvote(Post $post){
+    public function downVote(Post $post){
         //
     }
 }

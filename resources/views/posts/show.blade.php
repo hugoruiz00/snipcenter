@@ -4,9 +4,15 @@
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="flex bg-[#212940] p-5">
                     <div class="mt-1 px-8 text-white text-center">
-                        <a href="{{route('posts.upvote', $post)}}" class="text-lg text-[#49B2FF] hover:text-[#1C6FAC]"><i class="fa-solid fa-plus"></i></a>
-                        <p class="text-lg my-3">{{$post->votes}}</p>
-                        <a href="{{route('posts.downvote', $post)}}" class="text-lg text-[#49B2FF] hover:text-[#1C6FAC]" ><i class="fa-solid fa-minus"></i></a>
+                        <a href="{{route('posts.upvote', $post)}}" class="text-2xl hover:text-[#49B2FF] text-[#ACACAC]
+                        {{$post->currentUserVote && $post->currentUserVote->vote===1 ? 'text-[#49B2FF]' : ''}}">
+                            <i class="fa-solid fa-plus stroke-2"></i>
+                        </a>
+                        <p class="text-lg my-3">{{$post->vote}}</p>
+                        <a href="{{route('posts.downvote', $post)}}" class="text-2xl hover:text-[#49B2FF] text-[#ACACAC]
+                        {{$post->currentUserVote && $post->currentUserVote->vote===-1 ? 'text-[#49B2FF]' : ''}}">
+                            <i class="fa-solid fa-minus"></i>
+                        </a>
                     </div>
                     <div class="text-white w-full">
                         <p class="text-xl">{{$post->name}}</p>

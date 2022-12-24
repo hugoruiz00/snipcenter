@@ -23,8 +23,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('posts', PostController::class);
-    Route::get('/posts/upvote/{post}', [PostController::class, 'upvote'])->name('posts.upvote');
-    Route::get('/posts/downvote/{post}', [PostController::class, 'downvote'])->name('posts.downvote');
+    Route::get('/posts/upvote/{post}', [PostController::class, 'upVote'])->name('posts.upvote');
+    Route::get('/posts/downvote/{post}', [PostController::class, 'downVote'])->name('posts.downvote');
 });
 
 require __DIR__.'/auth.php';

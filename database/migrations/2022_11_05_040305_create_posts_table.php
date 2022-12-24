@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 150);
             $table->text('body');
-            $table->integer('votes')->default(0);
+            $table->integer('vote')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('post_status_id')->constrained();
             $table->timestamps();

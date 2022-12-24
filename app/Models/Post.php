@@ -25,4 +25,9 @@ class Post extends Model
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function currentUserVote()
+    {
+        return $this->hasOne(Vote::class)->latestOfMany();
+    }
 }
