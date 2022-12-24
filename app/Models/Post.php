@@ -28,6 +28,6 @@ class Post extends Model
 
     public function currentUserVote()
     {
-        return $this->hasOne(Vote::class)->latestOfMany();
+        return $this->hasOne(Vote::class)->where('user_id', auth()->id());
     }
 }
