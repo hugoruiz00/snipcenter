@@ -5,29 +5,34 @@
                 Consulta porciones de código reutilizables para funcionalidades específicas, por ejemplo: leer un archivo en Java, sumar días hábiles en PHP y cualquier funcionalidad 
                 de diferentes tecnologías gracias al aporte de la comunidad, ya que cualquiera puede <span class="text-red">publicar</span> sus porciones de código reutilizables.
             </h1>
-            @foreach ($posts as $post)
-            <div class="bg-[#212940] overflow-hidden sm:rounded-lg my-5 p-4">
-                <div class="flex">
-                    <div class="flex items-center px-3 text-white">
-                        <i class="fa-solid fa-plus mr-2"></i>
-                        <p class="text-lg">{{$post->vote}}</p>
-                    </div>
-                    <div class="px-4">
-                        <a href="{{route('posts.show', $post)}}" class="text-white text-xl block mb-3">{{$post->name}}</a>
-                        <div class="flex text-white mb-3">
-                            @foreach ($post->tags as $tag)
-                                <a href="#" class="text-xs mr-2 py-[2px] px-2 bg-[#175C8F] rounded">{{$tag->name}}</a>
-                            @endforeach
+            @forelse ($posts as $post)
+                <div class="bg-[#212940] overflow-hidden sm:rounded-lg my-5 p-4">
+                    <div class="flex">
+                        <div class="flex items-center px-3 text-white">
+                            <i class="fa-solid fa-plus mr-2"></i>
+                            <p class="text-lg">{{$post->vote}}</p>
                         </div>
-                        <p class="text-white text-xs">Publicado por 
-                            <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
-                            <span>|</span>
-                            <span>{{$post->created_at->diffForHumans()}}</span>
-                        </p>
+                        <div class="px-4">
+                            <a href="{{route('posts.show', $post)}}" class="text-white text-xl block mb-3">{{$post->name}}</a>
+                            <div class="flex text-white mb-3">
+                                @foreach ($post->tags as $tag)
+                                    <a href="#" class="text-xs mr-2 py-[2px] px-2 bg-[#175C8F] rounded">{{$tag->name}}</a>
+                                @endforeach
+                            </div>
+                            <p class="text-white text-xs">Publicado por 
+                                <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
+                                <span>|</span>
+                                <span>{{$post->created_at->diffForHumans()}}</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+            @empty
+                <div class="bg-[#212940] overflow-hidden sm:rounded-lg my-5 p-4 text-center">    
+                    <p class="text-white text-lg">No se han encontrado resultados para tu búsqueda</p>
+                    <p class="text-gray-300">Intente realizar su búsqueda con otras palabras</p>
+                </div>
+            @endforelse
         </div>
     </div>
 </x-app-layout>
