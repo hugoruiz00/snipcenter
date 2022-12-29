@@ -1,12 +1,16 @@
 <x-app-layout>
+    {{-- <a href="{{route('home')}}" 
+    class="absolute top-28 left-20 text-xl text-white hover:text-[#49B2FF] bg-[#212940] py-1 px-2 rounded-lg top invisible sm:visible">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a> --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
                 <div class="flex bg-[#212940] p-5">
-                    <div class="mt-1 px-8 text-white text-center">
+                    <div class="mt-1 px-2 sm:px-8 text-white text-center">
                         <a href="{{route('posts.upvote', $post)}}" class="text-2xl hover:text-[#49B2FF] text-[#ACACAC]
                         {{$post->currentUserVote && $post->currentUserVote->vote===1 ? 'text-[#49B2FF]' : ''}}">
-                            <i class="fa-solid fa-plus stroke-2"></i>
+                            <i class="fa-solid fa-plus"></i>
                         </a>
                         <p class="text-lg my-3">{{$post->vote}}</p>
                         <a href="{{route('posts.downvote', $post)}}" class="text-2xl hover:text-[#49B2FF] text-[#ACACAC]

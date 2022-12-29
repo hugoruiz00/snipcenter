@@ -1,12 +1,12 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden sm:rounded-t-lg">
-                <div class="py-4 px-6 bg-[#212940] text-white">
+            <div class="overflow-hidden sm:rounded-lg">
+                <div class="pt-3 px-6 bg-[#212940] text-white">
                     <p class="font-semibold text-lg">Nueva publicación</p>
                     <div class="w-28 h-1.5 mt-1 rounded bg-[#1C6FAC]"></div>
                 </div>
-                <div class="p-6 bg-[#212940]">
+                <div class="p-7 bg-[#212940]">
                     <form action="{{route('posts.store', $post)}}" method="POST">
                         @csrf
                         <div>

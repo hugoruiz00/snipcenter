@@ -18,6 +18,16 @@
                 </div> --}}
             </div>
 
+            <div class="hidden sm:flex sm:items-center">
+                <label class="relative block">
+                    <span class="sr-only">Search</span>
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-[#1C6FAC]">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input class="placeholder:italic placeholder:text-slate-400 block bg-[#222C49] w-96 border border-[#1C6FAC] rounded-2xl py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-[#1C6FAC] focus:ring-[#1C6FAC] focus:ring-1 sm:text-sm text-gray-300" placeholder="Search for anything..." type="text" name="search"/>
+                </label>
+            </div>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')" class="mr-3">
