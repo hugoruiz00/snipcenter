@@ -35,6 +35,12 @@
                             <span>|</span>
                             <span>{{$post->created_at->diffForHumans()}}</span>
                         </p>
+
+                        <form action="{{route('comments.store', $post)}}" method="POST">
+                            @csrf
+                            <input class="mt-5 placeholder:text-slate-400 block bg-[#222C49] w-full border border-[#1C6FAC] rounded shadow-sm focus:outline-none focus:border-[#1C6FAC] focus:ring-[#1C6FAC] focus:ring-1 sm:text-sm text-gray-300" 
+                                placeholder="Escribe un comentario..." type="text" name="text"/>
+                        </form>
                     </div>
                 </div>
             </div>
