@@ -158,4 +158,10 @@ class PostController extends Controller
 
         return redirect()->route('posts.show', $post);
     }
+
+    public function tagPosts(Tag $tag){
+        $posts = $tag->posts;
+
+        return view('posts.tagPosts', compact('posts', 'tag'));
+    }
 }

@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::get('/posts/upvote/{post}', [PostController::class, 'upVote'])->name('posts.upvote');
     Route::get('/posts/downvote/{post}', [PostController::class, 'downVote'])->name('posts.downvote');
+    Route::get('/posts/tag/{tag}', [PostController::class, 'tagPosts'])->name('posts.tagPosts');
     Route::post('/comments/{post}', [CommentController::class, 'store'])->name('comments.store');
 });
 
