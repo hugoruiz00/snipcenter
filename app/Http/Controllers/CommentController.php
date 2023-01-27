@@ -36,6 +36,11 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
+        $request->validate(
+            ['text' => 'required|max:1000'],
+            ['text.required' => 'Ingrese un comentario', 'text.max' => 'No ingrese más de 1000 caracteres']
+        );
+
         Comment::create([
             'text' => $request->text,
             'post_id' => $post->id,

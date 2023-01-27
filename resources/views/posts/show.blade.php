@@ -40,7 +40,25 @@
                             @csrf
                             <input class="mt-5 placeholder:text-slate-400 block bg-[#222C49] w-full border border-[#1C6FAC] rounded shadow-sm focus:outline-none focus:border-[#1C6FAC] focus:ring-[#1C6FAC] focus:ring-1 sm:text-sm text-gray-300" 
                                 placeholder="Escribe un comentario..." type="text" name="text"/>
+                            <x-input-error :messages="$errors->get('text')" class="mt-2" />
                         </form>
+
+                        <div class="mt-5">
+                            @forelse ($post->comments as $comment)
+                                <p class="text-white text-xs">
+                                    <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
+                                    <span>|</span>
+                                    <span>{{$comment->created_at->diffForHumans()}}</span>
+                                </p>
+                                <p class="text-xs mb-3">
+                                    {{$comment->text}}
+                                </p>
+                            @empty
+                                <p class="text-xs text-gray-300">
+                                    Todavía no hay comentarios
+                                </p>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
