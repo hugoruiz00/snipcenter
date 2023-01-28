@@ -20,7 +20,7 @@
                                 @endforeach
                             </div>
                             <p class="text-white text-xs">Publicado por 
-                                <a href="#" class="text-[#49B2FF]">S4avitar445 <strong>(189)</strong></a>
+                                <a href="{{route('users.show', $post->user)}}" class="text-[#49B2FF]">{{$post->user->name}} <strong>({{$post->user->reputation}})</strong></a>
                                 <span>|</span>
                                 <span>{{$post->created_at->diffForHumans()}}</span>
                             </p>
